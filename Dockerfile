@@ -13,7 +13,7 @@ FROM public.ecr.aws/ubuntu/ubuntu:20.04 AS core
 ARG DEBIAN_FRONTEND="noninteractive"
 
 # Install git, SSH, Git, Firefox, GeckoDriver, Chrome, ChromeDriver,  stunnel, AWS Tools, configure SSM, AWS CLI v2, env tools for runtimes: Dotnet, NodeJS, Ruby, Python, PHP, Java, Go, .NET, Powershell Core,  Docker, Composer, and other utilities
-COMMAND REDACTED FOR BREVITY
+# COMMAND REDACTED FOR BREVITY
 # Activate runtime versions specific to image version.
 RUN n $NODE_14_VERSION
 RUN pyenv  global $PYTHON_39_VERSION
