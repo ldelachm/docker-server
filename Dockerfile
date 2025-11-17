@@ -21,11 +21,93 @@ RUN phpenv global $PHP_80_VERSION
 RUN rbenv  global $RUBY_27_VERSION
 RUN goenv global  $GOLANG_15_VERSION
 
-# Configure SSH
-COPY ssh_config /root/.ssh/config
-COPY runtimes.yml /codebuild/image/config/runtimes.yml
-COPY dockerd-entrypoint.sh /usr/local/bin/dockerd-entrypoint.sh
-COPY legal/bill_of_material.txt /usr/share/doc/bill_of_material.txt
-COPY amazon-ssm-agent.json /etc/amazon/ssm/amazon-ssm-agent.json
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    git \
+    ssh \
+    curl \
+    wget \
+    unzip \
+    zip \
+    build-essential \
+    software-properties-common \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
+    lsb-release \
+    python3 \
+    python3-pip \
+    python3-dev \
+    nodejs \
+    npm \
+    default-jdk \
+    maven \
+    gradle \
+    php \
+    php-curl \
+    php-xml \
+    php-mysql \
+    php-mbstring \
+    php-zip \
+    ruby \
+    ruby-dev \
+    postgresql \
+    mysql-server \
+    mongodb \
+    redis-server \
+    nginx \
+    apache2 \
+    vim \
+    emacs \
+    nano \
+    git-lfs \
+    imagemagick \
+    ffmpeg \
+    shellcheck \
+    locales \
+    fonts-liberation \
+    netcat \
+    iputils-ping \
+    traceroute \
+    sqlite3 \
+    mercurial \
+    subversion \
+    cmake \
+    clang \
+    gcc \
+    g++ \
+    gdb \
+    valgrind \
+    latex-full \
+    texlive-full \
+    gimp \
+    inkscape \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh"]
+RUN pip3 install --no-cache-dir \
+    numpy \
+    pandas \
+    scipy \
+    matplotlib \
+    scikit-learn \
+    tensorflow \
+    torch \
+    jupyter \
+    pytest \
+    pylint \
+    black \
+    mypy \
+    flask \
+    django \
+    requests \
+    beautifulsoup4 \
+    selenium
+
+# Configure SSH
+# COPY ssh_config /root/.ssh/config
+# COPY runtimes.yml /codebuild/image/config/runtimes.yml
+# COPY dockerd-entrypoint.sh /usr/local/bin/dockerd-entrypoint.sh
+# COPY legal/bill_of_material.txt /usr/share/doc/bill_of_material.txt
+# COPY amazon-ssm-agent.json /etc/amazon/ssm/amazon-ssm-agent.json
+
+# ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh"]
