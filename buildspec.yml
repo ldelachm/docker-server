@@ -2,5 +2,4 @@ version: 0.2
 phases:
   build:
     commands:
-      # - cd ubuntu/standard/5.0
       - docker buildx build -t codebuild-ubuntu:latest .
