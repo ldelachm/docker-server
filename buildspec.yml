@@ -2,4 +2,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - docker buildx build -t .
+      - docker buildx build .
